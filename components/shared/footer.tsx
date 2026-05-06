@@ -59,7 +59,7 @@ export default function Footer() {
               </Link>
               <Link
                 prefetch={false}
-                href="https://instagram.com/tusharv369"
+                href="https://instagram.com/thetusharvarshney"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
