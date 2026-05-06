@@ -1,0 +1,26 @@
+{
+  "name": "multi-step-form-preview",
+  "categories": [
+    "form",
+    "authentication"
+  ],
+  "description": "A multi-step form component with a progress bar and navigation buttons. Used for signup forms, surveys, etc.",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/multi-step-form.json",
+    "https://blocks.mvp-subha.me/r/utils.json",
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/input.json",
+    "https://blocks.mvp-subha.me/r/label.json",
+    "https://blocks.mvp-subha.me/r/progress.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import MultiStepForm from '@/components/ui/multi-step-form';\r\n\r\nexport default function MultiStepFormPreview() {\r\n  return (\r\n    <div className=\"mx-auto w-full max-w-lg\">\r\n      <MultiStepForm\r\n        onSubmit={(data) => {\r\n          console.log('Form submitted:', data);\r\n        }}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/forms/multi-step-form-preview.tsx",
+      "target": "components/petalui/multi-step-form-preview.tsx"
+    }
+  ]
+}

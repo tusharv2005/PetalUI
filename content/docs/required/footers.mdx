@@ -1,0 +1,58 @@
+---
+title: Footers
+description: Footers are used to provide additional information or context at the end of a document. They can include details such as page numbers, copyright information, or links to related content.
+root: required
+---
+
+import { ComponentPreview } from '@/components/preview/component-preview';
+import { extractSourceCode } from '@/lib/code';
+import { ComponentSource } from '@/components/preview/component-source';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+## 4 Column Footer
+
+<ComponentPreview
+  name="footer-4col"
+  classNameComponentContainer="h-[400px]"
+  code={(await extractSourceCode('footer-4col')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Glowing Footer
+
+<ComponentPreview
+  name="footer-glow"
+  classNameComponentContainer="h-[400px]"
+  code={(await extractSourceCode('footer-glow')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Footer with Newsletter
+
+<ComponentPreview
+  name="footer-newsletter"
+  classNameComponentContainer="h-[400px]"
+  code={(await extractSourceCode('footer-newsletter')).code}
+  lang="tsx"
+/>
+
+## Animated Footer
+
+<ComponentPreview
+  name="footer-animated"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode('footer-animated')).code}
+  lang="tsx"
+/>
+
+## Standard Footer
+
+<ComponentPreview
+  name="footer-standard"
+  classNameComponentContainer="h-[400px]"
+  code={(await extractSourceCode('footer-standard')).code}
+  lang="tsx"
+/>

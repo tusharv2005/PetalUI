@@ -1,0 +1,27 @@
+{
+  "name": "payment-modal",
+  "description": "A payment modal component with multiple payment options and smooth animations",
+  "type": "registry:ui",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/dialog.json",
+    "https://blocks.mvp-subha.me/r/label.json",
+    "https://blocks.mvp-subha.me/r/radio-group.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "'use client';\r\n\r\nimport { useState } from 'react';\r\nimport {\r\n  Dialog,\r\n  DialogContent,\r\n  DialogHeader,\r\n  DialogTitle,\r\n} from '@/components/ui/dialog';\r\nimport { Button } from '@/components/ui/button';\r\nimport { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';\r\nimport { Label } from '@/components/ui/label';\r\nimport { cn } from '@/lib/utils';\r\n\r\ninterface PaymentMethod {\r\n  id: string;\r\n  name: string;\r\n  logo: string;\r\n  description: string;\r\n}\r\n\r\nconst paymentMethods: PaymentMethod[] = [\r\n  {\r\n    id: 'paypal',\r\n    name: 'PayPal',\r\n    logo: 'https://i.postimg.cc/66GB3pms/paypal-3384015-640.webp',\r\n    description: 'Pay with your PayPal account',\r\n  },\r\n  {\r\n    id: 'stripe',\r\n    name: 'Stripe',\r\n    logo: 'https://i.postimg.cc/bYKNHttN/images.jpg',\r\n    description: 'Pay with credit card',\r\n  },\r\n  {\r\n    id: 'razorpay',\r\n    name: 'Razorpay',\r\n    logo: 'https://i.postimg.cc/TYMfWvzK/razorpay-payment-gateway-software-500x500.webp',\r\n    description: 'Pay with Indian payment methods',\r\n  },\r\n];\r\n\r\ninterface PaymentModalProps {\r\n  isOpen: boolean;\r\n  onClose: () => void;\r\n  plan: {\r\n    name: string;\r\n    price: number;\r\n    period: string;\r\n  };\r\n}\r\n\r\nexport function PaymentModal({ isOpen, onClose, plan }: PaymentModalProps) {\r\n  const [selectedMethod, setSelectedMethod] = useState<string>('stripe');\r\n  const [isLoading, setIsLoading] = useState(false);\r\n\r\n  const handleSubmit = async () => {\r\n    setIsLoading(true);\r\n    // Simulated payment processing\r\n    await new Promise((resolve) => setTimeout(resolve, 1500));\r\n    setIsLoading(false);\r\n    onClose();\r\n  };\r\n\r\n  return (\r\n    <Dialog open={isOpen} onOpenChange={onClose}>\r\n      <DialogContent className=\"p-0 sm:max-w-[500px]\">\r\n        <DialogHeader className=\"border-b p-6\">\r\n          <DialogTitle className=\"text-xl font-medium\">\r\n            Choose payment method\r\n          </DialogTitle>\r\n        </DialogHeader>\r\n        <div className=\"space-y-6 p-6\">\r\n          <div className=\"space-y-4\">\r\n            <div className=\"flex items-baseline justify-between\">\r\n              <h3 className=\"text-sm font-medium text-zinc-400\">\r\n                Selected plan\r\n              </h3>\r\n              <div className=\"text-right\">\r\n                <div className=\"text-sm font-medium\">{plan.name}</div>\r\n                <div className=\"text-2xl font-bold\">\r\n                  €{plan.price}\r\n                  <span className=\"text-sm text-zinc-400\">/{plan.period}</span>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <RadioGroup\r\n              value={selectedMethod}\r\n              onValueChange={setSelectedMethod}\r\n              className=\"grid gap-4\"\r\n            >\r\n              {paymentMethods.map((method) => (\r\n                <Label\r\n                  key={method.id}\r\n                  className={cn(\r\n                    'flex cursor-pointer items-center justify-between rounded-lg border px-4 py-3 transition-colors',\r\n                    selectedMethod === method.id ? 'border-primary' : 'border',\r\n                  )}\r\n                >\r\n                  <div className=\"flex items-center gap-4\">\r\n                    <RadioGroupItem\r\n                      value={method.id}\r\n                      className=\"border-zinc-700\"\r\n                    />\r\n                    <div className=\"space-y-1\">\r\n                      <div className=\"font-medium\">{method.name}</div>\r\n                      <div className=\"text-sm text-zinc-400\">\r\n                        {method.description}\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                  <div className=\"relative h-8 w-20\">\r\n                    <img\r\n                      src={method.logo || '/placeholder.svg'}\r\n                      alt={method.name}\r\n                      className=\"object-contain\"\r\n                    />\r\n                  </div>\r\n                </Label>\r\n              ))}\r\n            </RadioGroup>\r\n          </div>\r\n          <Button\r\n            className=\"w-full\"\r\n            onClick={handleSubmit}\r\n            disabled={isLoading}\r\n          >\r\n            {isLoading ? 'Processing...' : 'Continue to payment'}\r\n          </Button>\r\n        </div>\r\n      </DialogContent>\r\n    </Dialog>\r\n  );\r\n}\r\n",
+      "path": "/components/ui/payment-modal.tsx",
+      "target": "components/ui/payment-modal.tsx"
+    }
+  ],
+  "categories": [
+    "modal",
+    "interactive"
+  ]
+}

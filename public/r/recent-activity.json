@@ -1,0 +1,23 @@
+{
+  "name": "recent-activity",
+  "description": "A recent activity component that shows a list of recent activities with timestamps. Used a base component for admin-dashboard-1. Used for admin dashboards, activity feeds, etc.",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { memo } from 'react';\r\nimport { motion } from 'framer-motion';\r\nimport { User, Download, Settings, Users } from 'lucide-react';\r\n\r\nconst activities = [\r\n  {\r\n    action: 'User login',\r\n    user: 'john@example.com',\r\n    time: '2 min ago',\r\n    icon: User,\r\n    color: 'text-blue-500',\r\n  },\r\n  {\r\n    action: 'Data export',\r\n    user: 'admin',\r\n    time: '5 min ago',\r\n    icon: Download,\r\n    color: 'text-green-500',\r\n  },\r\n  {\r\n    action: 'Settings updated',\r\n    user: 'admin',\r\n    time: '10 min ago',\r\n    icon: Settings,\r\n    color: 'text-orange-500',\r\n  },\r\n  {\r\n    action: 'New user registered',\r\n    user: 'sarah@example.com',\r\n    time: '15 min ago',\r\n    icon: Users,\r\n    color: 'text-purple-500',\r\n  },\r\n];\r\n\r\nexport const RecentActivity = memo(() => {\r\n  return (\r\n    <div className=\"border-border bg-card/40 rounded-xl border p-6\">\r\n      <h3 className=\"mb-4 text-xl font-semibold\">Recent Activity</h3>\r\n      <div className=\"space-y-3\">\r\n        {activities.map((activity, index) => {\r\n          const Icon = activity.icon;\r\n          return (\r\n            <motion.div\r\n              key={index}\r\n              initial={{ opacity: 0, y: 10 }}\r\n              animate={{ opacity: 1, y: 0 }}\r\n              transition={{ delay: index * 0.1 }}\r\n              className=\"hover:bg-accent/50 flex items-center gap-3 rounded-lg p-2 transition-colors\"\r\n            >\r\n              <div className={`bg-accent/50 rounded-lg p-2`}>\r\n                <Icon className={`h-4 w-4 ${activity.color}`} />\r\n              </div>\r\n              <div className=\"min-w-0 flex-1\">\r\n                <div className=\"text-sm font-medium\">{activity.action}</div>\r\n                <div className=\"text-muted-foreground truncate text-xs\">\r\n                  {activity.user}\r\n                </div>\r\n              </div>\r\n              <div className=\"text-muted-foreground text-xs\">\r\n                {activity.time}\r\n              </div>\r\n            </motion.div>\r\n          );\r\n        })}\r\n      </div>\r\n    </div>\r\n  );\r\n});\r\n\r\nRecentActivity.displayName = 'RecentActivity';\r\n",
+      "path": "/components/petalui/dashboards/admin-dashboard-1/ui/recent-activity.tsx",
+      "target": "components/petalui/ui/recent-activity.tsx"
+    }
+  ]
+}

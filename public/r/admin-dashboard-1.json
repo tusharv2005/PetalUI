@@ -1,0 +1,43 @@
+{
+  "name": "admin-dashboard-1",
+  "description": "A complete and professional admin dashboard layout with sidebar, header, cards, charts, tables, and more. Used for admin panels, analytics dashboards, etc.",
+  "categories": [
+    "dashboard",
+    "layout",
+    "page"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/sidebar.json",
+    "https://blocks.mvp-subha.me/r/utils.json",
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/input.json",
+    "https://blocks.mvp-subha.me/r/separator.json",
+    "https://blocks.mvp-subha.me/r/sheet.json",
+    "https://blocks.mvp-subha.me/r/skeleton.json",
+    "https://blocks.mvp-subha.me/r/tooltip.json",
+    "https://blocks.mvp-subha.me/r/use-mobile.json",
+    "https://blocks.mvp-subha.me/r/dashboard-card.json",
+    "https://blocks.mvp-subha.me/r/revenue-chart.json",
+    "https://blocks.mvp-subha.me/r/users-table.json",
+    "https://blocks.mvp-subha.me/r/quick-actions.json",
+    "https://blocks.mvp-subha.me/r/system-status.json",
+    "https://blocks.mvp-subha.me/r/recent-activity.json",
+    "https://blocks.mvp-subha.me/r/dashboard-header.json",
+    "https://blocks.mvp-subha.me/r/dropdown-menu.json",
+    "https://blocks.mvp-subha.me/r/breadcrumb.json",
+    "https://blocks.mvp-subha.me/r/admin-sidebar.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { useState } from 'react';\r\nimport { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';\r\nimport { Users, Activity, DollarSign, Eye } from 'lucide-react';\r\nimport { DashboardCard } from './ui/dashboard-card';\r\nimport { RevenueChart } from './ui/revenue-chart';\r\nimport { UsersTable } from './ui/users-table';\r\nimport { QuickActions } from './ui/quick-actions';\r\nimport { SystemStatus } from './ui/system-status';\r\nimport { RecentActivity } from './ui/recent-activity';\r\nimport { DashboardHeader } from './ui/dashboard-header';\r\nimport { AdminSidebar } from './ui/admin-sidebar';\r\n\r\n// Dashboard stats data\r\nconst stats = [\r\n  {\r\n    title: 'Total Users',\r\n    value: '12,345',\r\n    change: '+12%',\r\n    changeType: 'positive' as const,\r\n    icon: Users,\r\n    color: 'text-blue-500',\r\n    bgColor: 'bg-blue-500/10',\r\n  },\r\n  {\r\n    title: 'Revenue',\r\n    value: '$45,678',\r\n    change: '+8.2%',\r\n    changeType: 'positive' as const,\r\n    icon: DollarSign,\r\n    color: 'text-green-500',\r\n    bgColor: 'bg-green-500/10',\r\n  },\r\n  {\r\n    title: 'Active Sessions',\r\n    value: '2,456',\r\n    change: '+15%',\r\n    changeType: 'positive' as const,\r\n    icon: Activity,\r\n    color: 'text-purple-500',\r\n    bgColor: 'bg-purple-500/10',\r\n  },\r\n  {\r\n    title: 'Page Views',\r\n    value: '34,567',\r\n    change: '-2.4%',\r\n    changeType: 'negative' as const,\r\n    icon: Eye,\r\n    color: 'text-orange-500',\r\n    bgColor: 'bg-orange-500/10',\r\n  },\r\n];\r\n\r\nexport default function AdminDashboard() {\r\n  const [isRefreshing, setIsRefreshing] = useState(false);\r\n  const [searchQuery, setSearchQuery] = useState('');\r\n\r\n  const handleRefresh = async () => {\r\n    setIsRefreshing(true);\r\n    await new Promise((resolve) => setTimeout(resolve, 1000));\r\n    setIsRefreshing(false);\r\n  };\r\n\r\n  const handleExport = () => {\r\n    console.log('Exporting data...');\r\n  };\r\n\r\n  const handleAddUser = () => {\r\n    console.log('Adding new user...');\r\n  };\r\n\r\n  return (\r\n    <SidebarProvider>\r\n      <AdminSidebar />\r\n      <SidebarInset>\r\n        <DashboardHeader\r\n          searchQuery={searchQuery}\r\n          onSearchChange={setSearchQuery}\r\n          onRefresh={handleRefresh}\r\n          onExport={handleExport}\r\n          isRefreshing={isRefreshing}\r\n        />\r\n\r\n        <div className=\"flex flex-1 flex-col gap-2 p-2 pt-0 sm:gap-4 sm:p-4\">\r\n          <div className=\"min-h-[calc(100vh-4rem)] flex-1 rounded-lg p-3 sm:rounded-xl sm:p-4 md:p-6\">\r\n            <div className=\"mx-auto max-w-6xl space-y-4 sm:space-y-6\">\r\n              <div className=\"px-2 sm:px-0\">\r\n                <h1 className=\"text-2xl font-bold tracking-tight sm:text-3xl\">\r\n                  Welcome Admin\r\n                </h1>\r\n                <p className=\"text-muted-foreground text-sm sm:text-base\">\r\n                  Here&apos;s what&apos;s happening with your platform today.\r\n                </p>\r\n              </div>\r\n\r\n              {/* Stats Cards */}\r\n              <div className=\"grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4\">\r\n                {stats.map((stat, index) => (\r\n                  <DashboardCard key={stat.title} stat={stat} index={index} />\r\n                ))}\r\n              </div>\r\n\r\n              {/* Main Content Grid */}\r\n              <div className=\"grid grid-cols-1 gap-4 sm:gap-6 xl:grid-cols-3\">\r\n                {/* Charts Section */}\r\n                <div className=\"space-y-4 sm:space-y-6 xl:col-span-2\">\r\n                  <RevenueChart />\r\n                  <UsersTable onAddUser={handleAddUser} />\r\n                </div>\r\n\r\n                {/* Sidebar Section */}\r\n                <div className=\"space-y-4 sm:space-y-6\">\r\n                  <QuickActions\r\n                    onAddUser={handleAddUser}\r\n                    onExport={handleExport}\r\n                  />\r\n                  <SystemStatus />\r\n                  <RecentActivity />\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </SidebarInset>\r\n    </SidebarProvider>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/dashboards/admin-dashboard-1/index.tsx",
+      "target": "components/petalui/index.tsx"
+    }
+  ]
+}

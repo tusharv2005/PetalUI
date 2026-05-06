@@ -1,0 +1,26 @@
+{
+  "name": "quick-actions",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "description": "A quick actions component that shows a set of action buttons for quick access. Used a base component for admin-dashboard-1. Used for admin dashboards, action panels, etc.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { memo } from 'react';\r\nimport { motion } from 'framer-motion';\r\nimport { Button } from '@/components/ui/button';\r\nimport { Users, BarChart3, Download, Settings } from 'lucide-react';\r\n\r\ninterface QuickActionsProps {\r\n  onAddUser: () => void;\r\n  onExport: () => void;\r\n}\r\n\r\nconst actions = [\r\n  {\r\n    icon: Users,\r\n    label: 'Add New User',\r\n    color: 'blue',\r\n    shortcut: 'Ctrl+N',\r\n    action: 'addUser',\r\n  },\r\n  {\r\n    icon: BarChart3,\r\n    label: 'View Analytics',\r\n    color: 'green',\r\n    shortcut: 'Ctrl+A',\r\n    action: 'analytics',\r\n  },\r\n  {\r\n    icon: Download,\r\n    label: 'Export Data',\r\n    color: 'purple',\r\n    shortcut: 'Ctrl+E',\r\n    action: 'export',\r\n  },\r\n  {\r\n    icon: Settings,\r\n    label: 'System Settings',\r\n    color: 'orange',\r\n    shortcut: 'Ctrl+S',\r\n    action: 'settings',\r\n  },\r\n];\r\n\r\nexport const QuickActions = memo(\r\n  ({ onAddUser, onExport }: QuickActionsProps) => {\r\n    const handleAction = (action: string) => {\r\n      switch (action) {\r\n        case 'addUser':\r\n          onAddUser();\r\n          break;\r\n        case 'analytics':\r\n          console.log('Viewing analytics...');\r\n          break;\r\n        case 'export':\r\n          onExport();\r\n          break;\r\n        case 'settings':\r\n          console.log('Opening settings...');\r\n          break;\r\n      }\r\n    };\r\n\r\n    return (\r\n      <div className=\"border-border bg-card/40 rounded-xl border p-6\">\r\n        <h3 className=\"mb-4 text-xl font-semibold\">Quick Actions</h3>\r\n        <div className=\"space-y-3\">\r\n          {actions.map((action, index) => {\r\n            const Icon = action.icon;\r\n            return (\r\n              <motion.div\r\n                key={action.label}\r\n                whileHover={{ scale: 1.02 }}\r\n                whileTap={{ scale: 0.98 }}\r\n              >\r\n                <Button\r\n                  variant=\"outline\"\r\n                  className={`h-12 w-full justify-start hover:bg-${action.color}-500/10 hover:border-${action.color}-500/50 transition-all duration-200`}\r\n                  onClick={() => handleAction(action.action)}\r\n                >\r\n                  <Icon className={`mr-3 h-5 w-5 text-${action.color}-500`} />\r\n                  <span className=\"font-medium\">{action.label}</span>\r\n                  <div className=\"text-muted-foreground ml-auto text-xs\">\r\n                    {action.shortcut}\r\n                  </div>\r\n                </Button>\r\n              </motion.div>\r\n            );\r\n          })}\r\n        </div>\r\n      </div>\r\n    );\r\n  },\r\n);\r\n\r\nQuickActions.displayName = 'QuickActions';\r\n",
+      "path": "/components/petalui/dashboards/admin-dashboard-1/ui/quick-actions.tsx",
+      "target": "components/petalui/ui/quick-actions.tsx"
+    }
+  ]
+}

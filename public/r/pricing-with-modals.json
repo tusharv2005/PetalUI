@@ -1,0 +1,27 @@
+{
+  "name": "pricing-with-modals",
+  "categories": [
+    "pricing",
+    "mainsection"
+  ],
+  "description": "A modern pricing section with 3 pricing tiers and modals for payment options. Best use for actual payment options stuffs",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/pricing-card.json",
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/utils.json",
+    "https://blocks.mvp-subha.me/r/payment-modal.json",
+    "https://blocks.mvp-subha.me/r/dialog.json",
+    "https://blocks.mvp-subha.me/r/radio-group.json",
+    "https://blocks.mvp-subha.me/r/label.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { PricingCard } from '@/components/ui/pricing-card';\r\n\r\nconst plans = [\r\n  {\r\n    name: 'Starter',\r\n    price: 15,\r\n    period: 'month',\r\n    features: [\r\n      'Up to 10,000 data points per month',\r\n      'Email support',\r\n      'Community forum access',\r\n      'Cancel anytime',\r\n    ],\r\n  },\r\n  {\r\n    name: 'Pro',\r\n    price: 40,\r\n    period: 'quarter',\r\n    featured: true,\r\n    features: [\r\n      'Advanced analytics dashboard',\r\n      'Customizable reports and charts',\r\n      'Real-time data tracking',\r\n      'Integration with third-party tools',\r\n      'Everything in Hobby Plan',\r\n    ],\r\n  },\r\n  {\r\n    name: 'Premium',\r\n    price: 120,\r\n    period: 'year',\r\n    features: [\r\n      'Unlimited data storage',\r\n      'Customizable dashboards',\r\n      'Advanced data segmentation',\r\n      'Real-time data processing',\r\n      'AI-powered insights and recommendations',\r\n      'Everything in Hobby Plan',\r\n      'Everything in Pro Plan',\r\n    ],\r\n  },\r\n];\r\n\r\nexport default function PricingPage() {\r\n  return (\r\n    <div className=\"relative min-h-screen w-full px-4 py-20\">\r\n      <div className=\"absolute inset-0 -z-10 overflow-hidden\">\r\n        <div className=\"bg-primary/5 absolute -top-[10%] -right-[10%] h-[40%] w-[40%] rounded-full blur-3xl\" />\r\n        <div className=\"bg-primary/5 absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full blur-3xl\" />\r\n      </div>\r\n      <div className=\"mx-auto max-w-6xl space-y-12\">\r\n        <div className=\"space-y-4 text-center\">\r\n          <h1 className=\"text-4xl font-bold\">\r\n            Simple pricing for advanced people\r\n          </h1>\r\n          <p className=\"mx-auto max-w-2xl text-gray-400\">\r\n            Our pricing is designed for advanced people who need more features\r\n            and more flexibility.\r\n          </p>\r\n        </div>\r\n\r\n        <div className=\"grid gap-8 md:grid-cols-3\">\r\n          {plans.map((plan) => (\r\n            <PricingCard key={plan.name} {...plan} />\r\n          ))}\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/mainsections/pricing/pricing-with-modals.tsx",
+      "target": "components/petalui/pricing-with-modals.tsx"
+    }
+  ]
+}

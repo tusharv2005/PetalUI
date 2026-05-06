@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "pages": [
+    "---Guide---",
+    "introduction",
+    "get-started",
+    "add-a-block",
+    "cli",
+    "categories",
+    "[Templates][Templates](https://aurasites.vercel.app)",
+    "---Foundation---",
+    "foundation/colors",
+    "[Theming][Theming](https://shadcnthemes.vercel.app)",
+    "foundation/contributions",
+    "---Components---",
+    "basic",
+    "required",
+    "mainsections",
+    "pages",
+    "forms",
+    "cards",
+    "chatbot",
+    "dashboards",
+    "creative",
+    "grids",
+    "text-animations",
+    "backgrounds",
+    "skeletons"
+  ]
+}

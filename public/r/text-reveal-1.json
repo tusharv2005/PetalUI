@@ -1,0 +1,21 @@
+{
+  "name": "text-reveal-1",
+  "description": "A text reveal animation that reveals text from the bottom. Used for titles, headings, etc.",
+  "categories": [
+    "text-animation"
+  ],
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/text-reveal.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { TextReveal } from '@/components/ui/text-reveal';\r\nimport { cn } from '@/lib/utils';\r\nimport { Geist } from 'next/font/google';\r\n\r\nconst geist = Geist({\r\n  subsets: ['latin'],\r\n  variable: '--font-geist',\r\n  weight: '400',\r\n});\r\n\r\nexport default function TextRevealLetters() {\r\n  return (\r\n    <TextReveal\r\n      className={cn(\r\n        `bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-6xl text-transparent dark:bg-gradient-to-b`,\r\n        geist.className,\r\n      )}\r\n      from=\"bottom\"\r\n      split=\"letter\"\r\n    >\r\n      Welcome to Mvpblocks!\r\n    </TextReveal>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/text-animations/text-reveal-1.tsx",
+      "target": "components/petalui/text-reveal-1.tsx"
+    }
+  ]
+}

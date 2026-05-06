@@ -1,0 +1,18 @@
+{
+  "name": "preloader-1",
+  "author": "twilightgoblin",
+  "type": "registry:block",
+  "description": "A curtain-style animated preloader that cycles through words and reveals content.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\nimport { motion } from 'framer-motion';\r\nimport { useEffect, useState } from 'react';\r\n\r\nconst words = [\r\n  'Welcome',\r\n  'Bienvenido',\r\n  'Willkommen',\r\n  'Bienvenue',\r\n  'Benvenuto',\r\n  'ようこそ',\r\n  '환영합니다',\r\n];\r\n\r\nexport default function Preloader1({ onFinish }: { onFinish?: () => void }) {\r\n  const [index, setIndex] = useState(0);\r\n  const [done, setDone] = useState(false);\r\n\r\n  useEffect(() => {\r\n    if (index < words.length - 1) {\r\n      const timer = setTimeout(() => setIndex(index + 1), 400);\r\n      return () => clearTimeout(timer);\r\n    } else {\r\n      const exitTimer = setTimeout(() => {\r\n        setDone(true);\r\n        onFinish?.();\r\n      }, 800);\r\n      return () => clearTimeout(exitTimer);\r\n    }\r\n  }, [index]);\r\n\r\n  return (\r\n    <motion.div\r\n      className=\"flex h-full w-full items-center justify-center bg-black\"\r\n      initial={{ y: 0, opacity: 1 }}\r\n      animate={done ? { y: '-100%', opacity: 0 } : { y: 0, opacity: 1 }}\r\n      transition={{ duration: 0.8, ease: 'easeInOut' }}\r\n    >\r\n      {!done && (\r\n        <div className=\"to bg-gradient-to-r from-zinc-900 to-zinc-500 bg-clip-text text-3xl font-semibold tracking-wide text-transparent md:text-5xl\">\r\n          {words[index]}\r\n        </div>\r\n      )}\r\n    </motion.div>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/preloaders/preloader-1/preloader-1.tsx",
+      "target": "components/petalui/preloader-1.tsx"
+    }
+  ]
+}

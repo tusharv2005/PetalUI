@@ -1,0 +1,19 @@
+{
+  "name": "classic-loader",
+  "categories": [
+    "loader",
+    "animation"
+  ],
+  "description": "A classic loader animation component with a sleek design. Used for loading animations, etc.",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "export default function ClassicLoader() {\r\n  return (\r\n    <div className=\"border-primary flex h-10 w-10 animate-spin items-center justify-center rounded-full border-4 border-t-transparent\"></div>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/basics/loaders/classic-loader.tsx",
+      "target": "components/petalui/classic-loader.tsx"
+    }
+  ]
+}

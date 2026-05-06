@@ -1,0 +1,22 @@
+{
+  "name": "scrollbasedvelocity-demo",
+  "categories": [
+    "scroll-animation",
+    "design"
+  ],
+  "description": "A demo of scroll based velocity text animation using framer motion. Used for showcasing text animations.",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/scrollbasedvelocity.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { VelocityScroll } from '@/components/ui/scrollbasedvelocity';\r\n\r\nexport default function ScrollBasedVelocityDemo() {\r\n  return (\r\n    <VelocityScroll\r\n      className=\"px-6 text-center text-4xl tracking-tight md:text-7xl md:leading-[5rem]\"\r\n      text=\"Welcome to Mvpblocks\"\r\n      default_velocity={5}\r\n    />\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/text-animations/scrollbasedvelocity-demo.tsx",
+      "target": "components/petalui/scrollbasedvelocity-demo.tsx"
+    }
+  ]
+}

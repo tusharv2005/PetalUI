@@ -1,0 +1,19 @@
+{
+  "name": "glow-btn",
+  "categories": [
+    "button",
+    "interactive"
+  ],
+  "description": "A fancy glow button with hover effects.",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "// components/GlowButton.tsx\r\n'use client';\r\n\r\nimport React from 'react';\r\n\r\ninterface GlowButtonProps\r\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n  children: React.ReactNode;\r\n}\r\n\r\nconst GlowButton: React.FC<GlowButtonProps> = ({ children, ...props }) => {\r\n  return (\r\n    <button\r\n      {...props}\r\n      className={`relative cursor-pointer rounded-2xl border-[0.25em] border-[rgb(217,176,255)] bg-[rgb(100,61,136)] px-12 py-4 text-[15px] font-bold text-[rgb(217,176,255)] transition-all duration-300 hover:bg-[rgb(217,176,255)] hover:text-[rgb(100,61,136)]`}\r\n    >\r\n      {children || 'Button'}\r\n    </button>\r\n  );\r\n};\r\n\r\nexport default GlowButton;\r\n",
+      "path": "/components/petalui/basics/buttons/glow-btn.tsx",
+      "target": "components/petalui/glow-btn.tsx"
+    }
+  ]
+}

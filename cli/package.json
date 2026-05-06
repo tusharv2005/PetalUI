@@ -1,0 +1,64 @@
+{
+  "name": "petalui",
+  "version": "2.1.10",
+  "description": "🚀 Official CLI for PetalUI - Copy, paste, customize—and launch your idea faster than ever!",
+  "bin": {
+    "petalui": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build needed for CLI\"",
+    "dev": "node ./src/index.js",
+    "release": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "publish:latest": "npm publish",
+    "check": "npm info petalui"
+  },
+  "keywords": [
+    "petalui",
+    "ui-components",
+    "react",
+    "nextjs",
+    "tailwindcss",
+    "cli",
+    "component-library",
+    "blocks",
+    "templates",
+    "mvp",
+    "developer-tools"
+  ],
+  "author": {
+    "name": "Subhadeep Roy",
+    "email": "tusharvarshney@gmail.com",
+    "url": "https://github.com/tusharvarshney"
+  },
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tusharvarshney/petalui.git",
+    "directory": "cli"
+  },
+  "homepage": "https://blocks.mvp-subha.me",
+  "bugs": {
+    "url": "https://github.com/tusharvarshney/petalui/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "@radix-ui/react-slot": "^1.2.3",
+    "execa": "^9.6.0",
+    "gradient-string": "^3.0.0",
+    "node-fetch": "^3.3.2",
+    "picocolors": "^1.1.1",
+    "prettier": "^3.6.1",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "ellipsis-block",
+  "description": "A code block component that shows an ellipsis animation to indicate loading or more content. Used for showcasing code snippets, tutorials, etc.",
+  "categories": [
+    "code",
+    "design",
+    "technical"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "react",
+    "lucide-react",
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { motion } from 'framer-motion';\r\nimport { Clipboard, ClipboardCheck } from 'lucide-react';\r\nimport { useEffect, useState } from 'react';\r\n\r\nexport default function EllipsisBlock() {\r\n  const [status, setStatus] = useState<'idle' | 'copied'>('idle');\r\n\r\n  useEffect(() => {\r\n    if (status !== 'idle') {\r\n      const timer = setTimeout(() => setStatus('idle'), 1500);\r\n      return () => clearTimeout(timer);\r\n    }\r\n  }, [status]);\r\n\r\n  const handleClick = () => {\r\n    setStatus('copied');\r\n  };\r\n\r\n  const icons = {\r\n    idle: <Clipboard strokeWidth={2.5} size={16} />,\r\n    copied: (\r\n      <ClipboardCheck\r\n        strokeWidth={2.5}\r\n        className=\"stroke-green-500 stroke-2\"\r\n        size={16}\r\n      />\r\n    ),\r\n  };\r\n\r\n  return (\r\n    <div className=\"relative w-full max-w-2xl rounded-xl p-0.5\">\r\n      <div className=\"rounded-xl p-4\">\r\n        <div className=\"flex items-center justify-between rounded-t-xl border-b border-gray-700 bg-neutral-900 px-4 py-2\">\r\n          <div className=\"flex items-center justify-center gap-2\">\r\n            <span className=\"size-3 rounded-full bg-[#FF5F56]\" />\r\n            <span className=\"size-3 rounded-full bg-[#FFBD2E]\" />\r\n            <span className=\"size-3 rounded-full bg-[#27C93F]\" />\r\n          </div>\r\n\r\n          <p className=\"text-sm font-medium text-gray-400\">app.tsx</p>\r\n          <button\r\n            aria-label=\"Copy\"\r\n            onClick={handleClick}\r\n            className=\"rounded-xl bg-gray-800 p-2 text-gray-100 hover:bg-gray-700 focus:outline-none\"\r\n          >\r\n            <motion.div\r\n              key={status}\r\n              initial={{ opacity: 0, scale: 0.5 }}\r\n              animate={{ opacity: 1, scale: 1 }}\r\n              exit={{ opacity: 0, scale: 0.5 }}\r\n              transition={{ type: 'spring', stiffness: 500, damping: 30 }}\r\n            >\r\n              {icons[status]}\r\n            </motion.div>\r\n          </button>\r\n        </div>\r\n        <pre className=\"overflow-x-auto rounded-b-xl bg-stone-800 p-4 text-sm text-blue-100\">\r\n          <code>\r\n            <span style={{ color: '#80b6f7' }}>import</span>{' '}\r\n            <span style={{ color: '#ffffff' }}>{'{'}</span>\r\n            <span style={{ color: '#8be9fd' }}>useState</span>\r\n            <span style={{ color: '#ffffff' }}>{'}'}</span>{' '}\r\n            <span style={{ color: '#80b6f7' }}>from</span>{' '}\r\n            <span style={{ color: '#50fa7b' }}>&quot;react&quot;</span>;\r\n            <br />\r\n            <br />\r\n            <span style={{ color: '#80b6f7' }}>function</span>{' '}\r\n            <span style={{ color: '#ff79c6' }}>Counter</span>() {'{'}\r\n            <br />\r\n            &nbsp;&nbsp;\r\n            <span style={{ color: '#80b6f7' }}>const</span>{' '}\r\n            <span style={{ color: '#8be9fd' }}>[count, setCount]</span> ={' '}\r\n            <span style={{ color: '#ff79c6' }}>useState</span>(\r\n            <span style={{ color: '#50fa7b' }}>0</span>);\r\n            <br />\r\n            <br />\r\n            &nbsp;&nbsp;\r\n            <span style={{ color: '#80b6f7' }}>return</span> (\r\n            <br />\r\n            &nbsp;&nbsp;&nbsp;&nbsp;\r\n            <span style={{ color: '#50fa7b' }}>&lt;button</span>{' '}\r\n            <span style={{ color: '#8be9fd' }}>onClick</span>=\r\n            <span style={{ color: '#bd93f9' }}>\r\n              {'{() => setCount(count + 1)}'}\r\n            </span>\r\n            <span style={{ color: '#50fa7b' }}>&gt;</span>\r\n            <br />\r\n            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clicked {'{count}'} times\r\n            <br />\r\n            &nbsp;&nbsp;&nbsp;&nbsp;\r\n            <span style={{ color: '#50fa7b' }}>&lt;/button&gt;</span>\r\n            <br />\r\n            &nbsp;&nbsp;);\r\n            <br />\r\n            {'}'}\r\n          </code>\r\n        </pre>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/cards/code/ellipsis-block.tsx",
+      "target": "components/petalui/ellipsis-block.tsx"
+    }
+  ]
+}

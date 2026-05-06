@@ -1,0 +1,21 @@
+import Advertisement from '@/components/important/Advertisement';
+import Features from '@/components/home/features';
+import Gallery from '@/components/home/gallery';
+import Hero from '@/components/home/hero';
+import Testimonials from '@/components/home/testimonials';
+import CTA from '@/components/shared/cta';
+import Faqs from '@/components/shared/faq';
+
+export const dynamic = 'force-static';
+
+export default function Homepage() {
+  return (
+    <>
+      <Advertisement />
+      <Hero />
+      <Features />
+      <Gallery />
+      <Testimonials />
+    </>
+  );
+}

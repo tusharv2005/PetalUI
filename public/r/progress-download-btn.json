@@ -1,0 +1,19 @@
+{
+  "name": "progress-download-btn",
+  "categories": [
+    "button",
+    "interactive"
+  ],
+  "description": "Just a download button with progress indicator.",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { useState } from 'react';\r\nimport { Download, Check } from 'lucide-react';\r\n\r\nexport default function ProgressDownloadBtn() {\r\n  const [active, setActive] = useState(false);\r\n  const [done, setDone] = useState(false);\r\n  const [progress, setProgress] = useState(0);\r\n  const duration = 4000; // ms\r\n\r\n  const handleClick = () => {\r\n    if (active || done) return;\r\n\r\n    setActive(true);\r\n    setProgress(0);\r\n\r\n    const interval = 100; // update every 100ms\r\n    let elapsed = 0;\r\n\r\n    const timer = setInterval(() => {\r\n      elapsed += interval;\r\n      const percent = Math.min((elapsed / duration) * 100, 100);\r\n      setProgress(percent);\r\n\r\n      if (elapsed >= duration) {\r\n        clearInterval(timer);\r\n        setActive(false);\r\n        setDone(true);\r\n      }\r\n    }, interval);\r\n  };\r\n\r\n  return (\r\n    <div className=\"relative flex flex-col items-center\">\r\n      <button\r\n        onClick={handleClick}\r\n        className={`relative flex h-14 w-56 items-center justify-center gap-3 overflow-hidden rounded-xl shadow-lg transition-all duration-300 ${\r\n          done\r\n            ? 'bg-green-500 hover:bg-green-600'\r\n            : 'bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:opacity-90'\r\n        } `}\r\n      >\r\n        {/* Icon */}\r\n        <div className=\"relative flex h-6 w-6 items-center justify-center\">\r\n          {done ? (\r\n            <Check className=\"h-6 w-6 scale-110 text-white transition-transform duration-300\" />\r\n          ) : (\r\n            <Download\r\n              className={`h-6 w-6 text-white transition-transform duration-300 ${active ? 'animate-spin-slow' : ''}`}\r\n            />\r\n          )}\r\n        </div>\r\n\r\n        {/* Label */}\r\n        <span className=\"text-base font-semibold text-white\">\r\n          {done\r\n            ? 'Completed'\r\n            : active\r\n              ? `Downloading ${Math.round(progress)}%`\r\n              : 'Download'}\r\n        </span>\r\n\r\n        {/* Progress bar overlay */}\r\n        {active && (\r\n          <div\r\n            className=\"absolute bottom-0 left-0 h-1 bg-white/70 shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all\"\r\n            style={{ width: `${progress}%` }}\r\n          />\r\n        )}\r\n      </button>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/basics/buttons/progress-download-btn.tsx",
+      "target": "components/petalui/progress-download-btn.tsx"
+    }
+  ]
+}

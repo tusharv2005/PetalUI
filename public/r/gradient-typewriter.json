@@ -1,0 +1,20 @@
+{
+  "name": "gradient-typewriter",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "A gradient typewriter text animation using framer motion. Used for showcasing text animations.",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/typewriter.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import TextGenerateEffect from '@/components/ui/typewriter';\r\n\r\nexport default function GradientTypewriter() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <TextGenerateEffect\r\n        words=\"Gradient Text\"\r\n        className=\"bg-gradient-to-r from-rose-400 to-red-600 bg-clip-text text-6xl text-transparent\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/petalui/text-animations/gradient-typewriter.tsx",
+      "target": "components/petalui/gradient-typewriter.tsx"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "checkbox",
+  "description": "A checkbox component for selecting options. Official Shadcn UI component.",
+  "categories": [
+    "checkbox",
+    "form-element",
+    "shadcn"
+  ],
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-checkbox"
+  ],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "'use client';\r\n\r\nimport * as React from 'react';\r\nimport * as CheckboxPrimitive from '@radix-ui/react-checkbox';\r\nimport { Check } from 'lucide-react';\r\n\r\nimport { cn } from '@/lib/utils';\r\n\r\nconst Checkbox = React.forwardRef<\r\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <CheckboxPrimitive.Root\r\n    ref={ref}\r\n    className={cn(\r\n      'peer border-primary ring-offset-background focus-visible:ring-ring data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground h-4 w-4 shrink-0 rounded-sm border focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',\r\n      className,\r\n    )}\r\n    {...props}\r\n  >\r\n    <CheckboxPrimitive.Indicator\r\n      className={cn('flex items-center justify-center text-current')}\r\n    >\r\n      <Check className=\"h-4 w-4\" />\r\n    </CheckboxPrimitive.Indicator>\r\n  </CheckboxPrimitive.Root>\r\n));\r\nCheckbox.displayName = CheckboxPrimitive.Root.displayName;\r\n\r\nexport { Checkbox };\r\n",
+      "path": "/components/ui/checkbox.tsx",
+      "target": "components/ui/checkbox.tsx"
+    }
+  ]
+}

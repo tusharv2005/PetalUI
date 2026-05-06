@@ -1,0 +1,18 @@
+{
+  "name": "skeleton",
+  "description": "A skeleton component for displaying loading placeholders. Official Shadcn UI component.",
+  "categories": [
+    "skeleton",
+    "loading",
+    "shadcn"
+  ],
+  "type": "registry:ui",
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import { cn } from '@/lib/utils';\r\n\r\nfunction Skeleton({ className, ...props }: React.ComponentProps<'div'>) {\r\n  return (\r\n    <div\r\n      data-slot=\"skeleton\"\r\n      className={cn('bg-accent animate-pulse rounded-md', className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport { Skeleton };\r\n",
+      "path": "/components/ui/skeleton.tsx",
+      "target": "components/ui/skeleton.tsx"
+    }
+  ]
+}
