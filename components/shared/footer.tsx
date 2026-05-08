@@ -18,7 +18,7 @@ export default function Footer() {
               <Image
                 width={40}
                 height={40}
-                src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
+                src="https://i.postimg.cc/0N4LMdNh/Petal-UI.png"
                 alt="logo"
                 className="h-8 w-8 rounded-full"
               />

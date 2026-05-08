@@ -29,9 +29,7 @@ export default function NotFound() {
                 Page Not Found
               </h2>
               <p className="text-muted-foreground max-w-md">
-                Sorry, we couldn&apos;t find the page you&apos;re looking for.
-                The page might have been moved, deleted, or you entered the
-                wrong URL.
+                Sorry, the page you’re trying to access can’t be found. It may have been removed, relocated, or the URL might be incorrect.
               </p>
             </div>
           </CardHeader>
